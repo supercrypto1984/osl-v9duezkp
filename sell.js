@@ -185,7 +185,7 @@ function check_list_time(token) {
 function recalcInterval() {
     // 每轮开始重算：interval = 48h / 当前 token 数（保证一轮 48h，首单到期正好重挂）
     const n = tokens.length > 0 ? tokens.length : 10000;
-    intervalTime = Math.max(Math.floor((CYCLE_SECONDS * 1000) / n), 8000); // 最低 8s
+    intervalTime = Math.max(Math.floor((CYCLE_SECONDS * 1000) / n), 4000); // 最低 4s（15000 token 也能 24h 一轮）
     Logger.info(`🔁 新一轮开始: token数=${n}, 间隔=${(intervalTime/1000).toFixed(1)}s, 一轮时长=${(CYCLE_SECONDS/3600).toFixed(0)}h`);
 }
 
